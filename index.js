@@ -40,6 +40,8 @@ class Airplane {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
+//COMPLETE
+
 class Person {
   constructor(name,age){
     this.name = name;
@@ -57,7 +59,7 @@ class Person {
     return(`${this.name}, ${this.age}`);
   }
 }
-//COMPLETE
+
 
 /*
   TASK 2
@@ -74,7 +76,28 @@ class Person {
 */
 
 class Car {
+  constructor(model, milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
 
+  fill(gallons){
+    this.tank += gallons;
+  }
+  
+  drive(distance){
+    let remainingCapacity = (this.tank*this.milesPerGallon);
+    if((this.milesPerGallon*this.tank) >= distance){
+      this.odometer += distance;
+      this.tank = this.tank - (distance/this.milesPerGallon);
+    }else if((this.milesPerGallon*this.tank) < distance && (this.milesPerGallon *this.tank) !== 0){
+      this.odometer += (this.milesPerGallon * this.tank);
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+  }
 }
 
 /*
@@ -90,7 +113,19 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-
+  // newObj = {
+  //   name: " ",
+  //   age: 0,
+  //   location: " "
+  // }
+  constructor(takeObj){
+    this.name = takeObj.name;
+    this.age = takeObj.age;
+    this.location = takeObj.location;
+  }
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}`;
+  }
 }
 
 /*
